@@ -23,4 +23,17 @@ export class NewsService {
    }
   })
   }
+
+  getTopHeadlinesByCategories(page:number,category:string){
+    return  this.http.get<NewsResponse>(`${url}/top-headlines`,
+    {params:{
+ 
+     apiKey:apiKey,
+     country:'us',
+     category:category,
+     page:page
+    }
+   })
+   } 
+
 }
