@@ -6,37 +6,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" mode="ios">
+<ion-content [fullscreen]="true" >
   
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" mode="ios">
     <ion-toolbar>
       <ion-title size="large">  AIEP'S NEWS</ion-title>
     </ion-toolbar>
   </ion-header>
-<ion-grid fixed>
-  <ion-row  *ngFor="let article of articles, let i=index">
-    <ion-col>
-     
-        <ion-card>
-          <ion-card-subtitle class="ion-margin">
-            <ion-row class="ion-aling-items-center">
-              <ion-col class="ion-margin">
-              <span class="text-primary">{{i+1}} .</span>
-            <span class="article-source-name">{{article.source.name}}</span>
-          </ion-col>
-          </ion-row>
-          </ion-card-subtitle>
-         <ion-title class="ion-padding-horizontal ion-margin-bottom">
-          {{article.title}}
-        </ion-title>
-         <ion-img [src]="article.urlToImage"></ion-img>
-        <ion-card-content>
-          <p> {{article.description}} </p>
-        </ion-card-content>
-        </ion-card>
-      </ion-col>
- 
-  </ion-row>
-</ion-grid>
+<ion-infinite-scroll threshold="25%"  position="bottom" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+<app-articles [articles]="articles"></app-articles>
 
 </ion-content>
