@@ -51,8 +51,13 @@ await actionSheet.present();
 
   }
 
-  shareArticle(){
-console.log('share article')
+  async shareArticle(){
+console.log('share article');
+await Share.share({
+  title:this.article.title,
+  text: this.article.source.name,
+   url: this.article.url,
+})
 
   }
 
